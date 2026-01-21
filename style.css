@@ -1,5 +1,8 @@
-.pixel{
+h1{
+    font-family: Amiri, serif;
+    text-decoration: underline;
+}
 
-    height: 10px;
-    width: 10px;
+canvas {
+    box-shadow: 10px 10px 25px #bababa;
 }

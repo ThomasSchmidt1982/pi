@@ -2,9 +2,9 @@ import decimalData from "./decimals.json" with {"type": "json"};
 import colorData from "./colors.json" with {"type": "json"};
 
 window.addEventListener("DOMContentLoaded", () => {
-    const canvaWidth = 500;
-    const canvaHeight = 500;
-    const pixSize = 5;
+    const canvaWidth = 1000;
+    const canvaHeight = 1000;
+    const pixSize = 10;
 
     const decimals = decimalData.values
         .replace(/\s+/g, "")
