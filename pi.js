@@ -10,7 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
         .replace(/\s+/g, "")
         .split("")
         .map(Number);
-    console.log(decimals.length)
     const colors = colorData.values
 
     // creer une div pixel + un id personnalisé + background color
