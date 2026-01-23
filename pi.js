@@ -1,37 +1,41 @@
+/*************************************************************/
+/* prog affichant les 10000 premieres decimales du nombre Pi */
+/*************************************************************/
+
 import decimalData from "./decimals.json" with {"type": "json"};
 import colorData from "./colors.json" with {"type": "json"};
 
 window.addEventListener("DOMContentLoaded", () => {
-    const canvaWidth = 1000;
-    const canvaHeight = 1000;
-    const pixSize = 10;
 
+    // initialisations
+    const CANVA_WIDTH = 1000;
+    const CANVA_HEIGHT = 1000;
+    const PIX_SIZE = 10;
     const decimals = decimalData.values
         .replace(/\s+/g, "")
         .split("")
         .map(Number);
     const colors = colorData.values
 
-    // creer une div pixel + un id personnalisé + background color
+    // créer un canvas enfant de la div d'id representation
     const divRepresentation = document.getElementById("representation");
     const canva = document.createElement("canvas")
-    canva.width = canvaWidth
-    canva.height = canvaHeight
+    canva.width = CANVA_WIDTH
+    canva.height = CANVA_HEIGHT
     divRepresentation.appendChild(canva)
+    const ctx = canva.getContext("2d");
 
-    const pix = canva.getContext("2d");
-
+    // boucle de balayage du tableau decimals + affichage des pixels
     let xOrigin = 0;
     let yOrigin = 0;
-
     for (let i = 0; i < decimals.length; i++) {
         const colorPix = decimals[i]
-        pix.fillStyle = colors[colorPix];
-        pix.fillRect(xOrigin, yOrigin, pixSize, pixSize);
-        xOrigin = xOrigin + pixSize;
-        if (xOrigin === canvaWidth) {
+        ctx.fillStyle = colors[colorPix];
+        ctx.fillRect(xOrigin, yOrigin, PIX_SIZE, PIX_SIZE);
+        xOrigin += PIX_SIZE;
+        if (xOrigin === CANVA_WIDTH) {
             xOrigin = 0
-            yOrigin = yOrigin + pixSize
+            yOrigin += PIX_SIZE
         }
     }
 })
